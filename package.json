@@ -1,22 +1,15 @@
 {
   "name": "ecommerce-coffee",
-  "version": "1.0.0",
-  "description": "A collaborative ecommerce project.",
-  "main": "index.js",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/freecodecamp-venezuela/ecommerce-coffee.git"
-  },
-  "keywords": [
-    "ecommerce"
-  ],
-  "author": "freecodecamp-venezuela",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/freecodecamp-venezuela/ecommerce-coffee/issues"
-  },
-  "homepage": "https://github.com/freecodecamp-venezuela/ecommerce-coffee#readme"
+  "dependencies": {
+    "next": "10.0.5",
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
+  }
 }
