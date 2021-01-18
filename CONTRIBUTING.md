@@ -1,5 +1,5 @@
-# Contributing to FCC VE Pair Programming
- 
+# Contributing to Ecommerce-coffee
+
 First off, thanks for taking the time to contribute!
 
 The following is a set of guidelines for contributing to this repository,
