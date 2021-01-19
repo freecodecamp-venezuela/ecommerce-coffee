@@ -39,7 +39,9 @@ const ProductPage = (product: {
           <HStack>
             <Text>{product.price}</Text>
             <NumberInput size="sm" defaultValue={1}>
-              <NumberInputField />
+              {/* The NumberInputField element needs an event listener with a function that multiplies 
+              the calculated price based on its input value and updates the calculatedPrice state. */}
+              <NumberInputField  />  
               <NumberInputStepper>
                 <NumberIncrementStepper />
                 <NumberDecrementStepper />
