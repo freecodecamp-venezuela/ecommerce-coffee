@@ -24,6 +24,8 @@ const ProductPage = (product: {
   price: number;
 }) => {
   let [calculatedPrice, updateCalculatedPrice] = useState(0);
+  
+  // HABLAME LENIN VES ESTE MENSAJE?
 
   return (
     <Box>
