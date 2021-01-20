@@ -8,6 +8,7 @@ import {
   useColorModeValue,
   Box,
 } from "@chakra-ui/react";
+import ProductPage from "./Product";
 
 function Layout({ children }) {
   const bg = useColorModeValue("white", "gray.900");
@@ -34,6 +35,13 @@ function Layout({ children }) {
             </List>
           </nav>
         </Container>
+
+        <ProductPage 
+          name="Nombre producto"
+          description="esta es la descripcion del producto"
+          image="https://picsum.photos/seed/picsum/200/600"
+          price={20}
+        />
       </Box>
       <main>{children}</main>
     </>

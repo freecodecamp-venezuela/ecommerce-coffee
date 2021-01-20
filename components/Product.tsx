@@ -15,7 +15,7 @@ import {
   NumberIncrementStepper,
   NumberDecrementStepper,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const ProductPage = (product: {
   name: string;
@@ -23,7 +23,17 @@ const ProductPage = (product: {
   description: string;
   price: number;
 }) => {
-  let [calculatedPrice, updateCalculatedPrice] = useState(0);
+
+  const { name, image, description, price } = product;
+
+  useEffect(() => {
+    setCalculatedPrice(price)
+  }, [])
+
+  let [calculatedPrice, setCalculatedPrice] = useState(0);
+  function itemChange(numberItems: string) {
+    setCalculatedPrice( price * Number(numberItems) );
+  }
 
   return (
     <Box>
@@ -38,10 +48,10 @@ const ProductPage = (product: {
           <Text>{product.description}</Text>
           <HStack>
             <Text>{product.price}</Text>
-            <NumberInput size="sm" defaultValue={1}>
-              {/* The NumberInputField element needs an event listener with a function that multiplies 
+            <NumberInput size="sm" defaultValue={1} onChange={itemChange} min={1} >
+              {/* The NumberInput element needs an event listener with a function that multiplies 
               the calculated price based on its input value and updates the calculatedPrice state. */}
-              <NumberInputField  />  
+              <NumberInputField />
               <NumberInputStepper>
                 <NumberIncrementStepper />
                 <NumberDecrementStepper />
