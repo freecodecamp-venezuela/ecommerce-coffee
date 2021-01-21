@@ -34,6 +34,12 @@ const ProductPage = (product: {
     setCalculatedPrice(price * Number(numberItems));
   }
 
+  /* To-do:
+  * Store current quantity and total price in local state
+  * On button click, add the local values to the shopping cart.
+   We'll need to wait for instructions on this one.
+  */
+
   // Optional component data ideas:
   /* 
     Total sold products
@@ -91,8 +97,6 @@ const ProductPage = (product: {
               min={1}
               w={["100%", "100%", "auto", "8rem"]}
             >
-              {/* The NumberInput element needs an event listener with a function that multiplies 
-              the calculated price based on its input value and updates the calculatedPrice state. */}
               <NumberInputField w={["100%", "100%", "8rem", "8rem"]} />
               <NumberInputStepper>
                 <NumberIncrementStepper />
