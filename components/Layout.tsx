@@ -36,9 +36,9 @@ function Layout({ children }) {
           </nav>
         </Container>
 
-        <ProductPage 
+        <ProductPage
           name="Nombre producto"
-          description="esta es la descripcion del producto"
+          description="Nulla pulvinar risus quam. Nullam in tincidunt justo. Suspendisse a tortor in elit tempor semper a a augue. Suspendisse eu rutrum eros. Mauris eu nunc nibh. Cras fringilla lectus eget pretium fermentum. Donec maximus urna in risus viverra laoreet eleifend eu nunc. Etiam sed imperdiet turpis. Pellentesque faucibus libero ex."
           image="https://picsum.photos/seed/picsum/200/600"
           price={20}
         />
