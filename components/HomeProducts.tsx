@@ -1,5 +1,6 @@
-import { Flex, Grid, GridItem, Text, Image, Box} from '@chakra-ui/react'
+import { Flex, Grid, Box, Text} from '@chakra-ui/react'
 import API from '../pages/api/hello'
+import Product from './Product'
 
 function HomeProducts() {
   return(
@@ -16,29 +17,7 @@ function HomeProducts() {
           // Make sure of change the properties when the real API is added
         }
         {API.coffees.map(coffee =>
-          <GridItem
-            key={coffee.id}
-            colSpan="1"
-            h="290px"
-            bg="gray.500"
-            color="gray.200"
-            borderRadius=".5em"
-            cursor="pointer"
-            _hover={{
-              background:"gray.600",
-              fontWeight:"bold"
-            }}
-           >
-            <Text fontSize="lg" align="center">{coffee.type}</Text>
-            <Image
-              boxSize="236px"
-              alt={coffee.type}
-              src={coffee.img}
-              m="0 auto"
-              borderRadius=".5em"
-            />
-            <Text fontSize="lg" align="center">{coffee.price}</Text>
-          </GridItem>
+          <Product prod={coffee} />
         )}
       </Grid>
       <foooter>
