@@ -17,7 +17,7 @@ function HomeProducts() {
           // Make sure of change the properties when the real API is added
         }
         {API.coffees.map(coffee =>
-          <Product prod={coffee} />
+          <Product prod={coffee} key={coffee.id} />
         )}
       </Grid>
       <foooter>
