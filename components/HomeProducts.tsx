@@ -1,8 +1,7 @@
 import { Flex, Grid, Box, Text} from '@chakra-ui/react'
-import API from '../pages/api/hello'
 import Product from './Product'
 
-function HomeProducts() {
+function HomeProducts({coffees}) {
   return(
     <Flex direction="column" justify="center" maxWidth="7xl" m=".5em auto 0" p="0 1.5em">
       <hearder>
@@ -16,7 +15,7 @@ function HomeProducts() {
           // I use some fake API
           // Make sure of change the properties when the real API is added
         }
-        {API.coffees.map(coffee =>
+        {coffees.map(coffee =>
           <Product prod={coffee} key={coffee.id} />
         )}
       </Grid>
