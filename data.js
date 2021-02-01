@@ -35,4 +35,22 @@ export const coffees = [
     img: "https://bigoven-res.cloudinary.com/image/upload/t_recipe-256/irish-coffee-0d9dd1.jpg",
     price: "50 USD"
   },
+  {
+    id: "cap15no1",
+    type: "Cappuccino",
+    img: "https://cdn140.picsart.com/315135747156201.jpg?type=webp&to=crop&r=256",
+    price: "28 USD"
+  },
+  {
+    id: "bla10ck1",
+    type: "Black",
+    img: "https://p1.hiclipart.com/preview/150/366/350/espresso-black-cup-black-coffee-mug-png-clipart.jpg",
+    price: "7 USD"
+  },
+  {
+    id: "esp20so1",
+    type: "Espresso",
+    img: "https://p1.hiclipart.com/preview/940/839/728/espresso-black-cup-black-ceramic-mug-png-clipart.jpg",
+    price: "13 USD"
+  },
 ]
