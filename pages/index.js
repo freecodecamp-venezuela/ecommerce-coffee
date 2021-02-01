@@ -2,7 +2,6 @@ import Head from "next/head";
 import styles from "styles/Home.module.css";
 import Layout from "components/Layout"
 import HomeProducts from "components/HomeProducts"
-import API from './api/hello'
 
 export default function Home(props) {
   return (
@@ -11,13 +10,15 @@ export default function Home(props) {
         <title>Ecommerce Coffee</title>
       </Head>
       <div className={styles.container}></div>
-      <HomeProducts coffees={props.data.coffees} />
+      <HomeProducts coffees={props.data} />
     </Layout>
   );
 }
 
 export async function getStaticProps() {
-  const data = API
+  const res = await fetch("http://localhost:3000/api/hello")
+  const data = await res.json()
+
   return {
     props: { data }
   }
