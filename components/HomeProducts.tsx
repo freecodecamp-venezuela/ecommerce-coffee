@@ -31,12 +31,12 @@ function HomeProducts({coffees, itemsLeft}) {
 
   return(
     <Flex direction="column" justify="center" maxWidth="7xl" m=".5em auto 0" p="0 1.5em">
-      <hearder>
+      <header>
         <Flex justify="space-between">
           <Text fontSize="xl"><strong>Products</strong></Text>
           <Text fontSize="xl" cursor="pointer"><strong>Filters</strong></Text>
         </Flex>
-      </hearder>
+      </header>
 
       <Grid templateColumns="repeat(auto-fit, minmax(300px, 1fr))" gap="6">
         {coffeesArr.map(coffee =>
@@ -44,7 +44,7 @@ function HomeProducts({coffees, itemsLeft}) {
         )}
       </Grid>
 
-      <foooter>
+      <footer>
         {coffeesLeft &&
           <Box
             w="max-content"
@@ -64,7 +64,7 @@ function HomeProducts({coffees, itemsLeft}) {
             Show more
           </Box>
         }
-      </foooter>
+      </footer>
     </Flex>
   )
 }
