@@ -10,7 +10,7 @@ export default function Home(props) {
         <title>Ecommerce Coffee</title>
       </Head>
       <div className={styles.container}></div>
-      <HomeProducts coffees={props.data} />
+      <HomeProducts coffees={props.firstNine} />
     </Layout>
   );
 }
@@ -18,8 +18,9 @@ export default function Home(props) {
 export async function getStaticProps() {
   const res = await fetch("http://localhost:3000/api/hello")
   const data = await res.json()
+  const firstNine = await data.slice(0,9)
 
   return {
-    props: { data }
+    props: { firstNine }
   }
 }
