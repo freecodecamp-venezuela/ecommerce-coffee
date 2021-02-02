@@ -4,7 +4,7 @@ function Product({prod}) {
   return(
     <GridItem
       key={prod.id}
-      colSpan="1"
+      colSpan={1}
       h="290px"
       bg="gray.500"
       color="gray.200"
