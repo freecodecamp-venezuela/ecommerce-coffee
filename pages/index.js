@@ -16,7 +16,7 @@ export default function Home(props) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch("http://localhost:3000/api/hello")
+  const res = await fetch("http://localhost:3000/api/products")
   const data = await res.json()
   const firstNine = await data.slice(0,9)
   const itemsLeft = await data.length - 9

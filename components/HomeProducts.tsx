@@ -11,7 +11,7 @@ function HomeProducts({coffees, itemsLeft}) {
     if (!query) return
 
     const fetchData = async () => {
-      const res = await fetch("http://localhost:3000/api/hello")
+      const res = await fetch("http://localhost:3000/api/products")
       const data = await res.json()
 
       const newCoffees = await data.slice(9)

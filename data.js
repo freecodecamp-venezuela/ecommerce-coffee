@@ -1,4 +1,4 @@
-export const coffees = [
+export const products = [
   {
     id: "cap15no",
     type: "Cappuccino",
