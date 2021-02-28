@@ -5,10 +5,10 @@ import Product from './Product'
 function HomeProducts({coffees, itemsLeft}) {
   const [coffeesArr, setCoffeeArr] = useState([...coffees])
   const [coffeesLeft, setCoffeesLeft] = useState(itemsLeft)
-  const [query, setQuery] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect( ()=> {
-    if (!query) return
+    if (!isLoading) return
 
     const fetchData = async () => {
       const res = await fetch("http://localhost:3000/api/products")
@@ -19,14 +19,14 @@ function HomeProducts({coffees, itemsLeft}) {
 
       setCoffeesLeft(isCoffees)
       setCoffeeArr([...coffeesArr, ...newCoffees])
-      setQuery(false)
+      setIsLoading(false)
     }
 
     fetchData()
-  }, [query])
+  }, [isLoading])
 
   const handleFetch = () => {
-    setQuery(true)
+    setIsLoading(true)
   }
 
   return(
