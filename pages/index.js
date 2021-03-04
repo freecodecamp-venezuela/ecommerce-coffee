@@ -10,18 +10,24 @@ export default function Home(props) {
         <title>Ecommerce Coffee</title>
       </Head>
       <div className={styles.container}></div>
-      <HomeProducts coffees={props.firstNine} itemsLeft={props.itemsLeft} />
+      <HomeProducts
+        coffees={props.products}
+        offset={props.offset}
+        isProductsLeft={props.isProductsLeft}
+      />
     </Layout>
   );
 }
 
 export async function getStaticProps() {
-  const res = await fetch("http://localhost:3000/api/products")
+  const res = await fetch("http://localhost:3000/api/products", {headers: {"offset": 0, "limit": 9}})
   const data = await res.json()
-  const firstNine = await data.slice(0,9)
-  const itemsLeft = await data.length - 9
+
+  const products = data.productsSliced
+  const offset = data.offset
+  const isProductsLeft = data.isProductsLeft
 
   return {
-    props: { firstNine, itemsLeft }
+    props: { products, offset, isProductsLeft }
   }
 }

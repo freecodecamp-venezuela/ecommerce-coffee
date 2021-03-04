@@ -2,23 +2,26 @@ import { useState, useEffect} from 'react'
 import { Flex, Grid, Box, Text} from '@chakra-ui/react'
 import Product from './Product'
 
-function HomeProducts({coffees, itemsLeft}) {
-  const [coffeesArr, setCoffeeArr] = useState([...coffees])
-  const [coffeesLeft, setCoffeesLeft] = useState(itemsLeft)
+function HomeProducts({ coffees, offset, isProductsLeft }) {
+  const [coffeesArr, setCoffeesArr] = useState([...coffees])
+  const [dataOffset, setDataOffset] = useState(offset.toString())
+  const [isCoffeLeft, setIsCoffeesLeft] = useState(isProductsLeft)
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect( ()=> {
     if (!isLoading) return
 
     const fetchData = async () => {
-      const res = await fetch("http://localhost:3000/api/products")
+      const headers = {'offset': dataOffset, 'limit': '6'}
+
+      const res = await fetch("http://localhost:3000/api/products", {headers})
       const data = await res.json()
 
-      const newCoffees = await data.slice(9)
-      const isCoffees= coffeesLeft - newCoffees.length
+      console.log(data.productsSliced)
 
-      setCoffeesLeft(isCoffees)
-      setCoffeeArr([...coffeesArr, ...newCoffees])
+      setCoffeesArr([...coffeesArr, ...data.productsSliced])
+      setDataOffset(offset)
+      setIsCoffeesLeft(data.isProductsLeft)
       setIsLoading(false)
     }
 
@@ -45,7 +48,7 @@ function HomeProducts({coffees, itemsLeft}) {
       </Grid>
 
       <footer>
-        {coffeesLeft &&
+        {isCoffeLeft &&
           <Box
             w="max-content"
             m=".5em auto"
