@@ -1,14 +1,14 @@
 import { products } from "../../data"
 
 export default function handler(req, res) {
-
-  const offset = parseInt(req.headers.offset)
-  const limit = parseInt(req.headers.limit)
+  const offset = parseInt(req.query.offset)
+  const limit = parseInt(req.query.limit)
+  const maxLimit = offset + limit
   let isProductsLeft = true
 
-  if (offset+limit >= products.length) isProductsLeft = false
+  if (maxLimit >= products.length) isProductsLeft = false
 
-  const productsSliced = products.slice(offset, offset+limit)
+  const productsSliced = products.slice(offset, maxLimit)
 
-  res.status(200).json({productsSliced, offset: offset+limit, isProductsLeft})
+  res.status(200).json({productsSliced, offset: maxLimit, isProductsLeft})
 }

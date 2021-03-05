@@ -12,12 +12,10 @@ function HomeProducts({ coffees, offset, isProductsLeft }) {
     if (!isLoading) return
 
     const fetchData = async () => {
-      const headers = {'offset': dataOffset, 'limit': '6'}
+      const params = `offset=${dataOffset}&limit=6`
 
-      const res = await fetch("http://localhost:3000/api/products", {headers})
+      const res = await fetch(`http://localhost:3000/api/products?${params}`)
       const data = await res.json()
-
-      console.log(data.productsSliced)
 
       setCoffeesArr([...coffeesArr, ...data.productsSliced])
       setDataOffset(offset)
