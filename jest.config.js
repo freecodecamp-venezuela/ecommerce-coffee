@@ -2,9 +2,8 @@ module.exports = {
   testEnvironment: 'jsdom',
   testPathIgnorePatterns: ['/node_modules/', '/.next/'],
   collectCoverage: true,
-  collectCoverageFrom: ['/**/*.ts(x)'],
   setupFilesAfterEnv: ['<rootDir>/.jest/setup.ts'],
-  modulePaths: ['<rootDir>'],
+  modulePaths: ['<rootDir>/','<rootDir>/.jest'],
   moduleNameMapper: {
     '^@pages(.*)$': '<rootDir>/pages$1',
   },
