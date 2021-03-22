@@ -20,7 +20,7 @@ export default function Home(props) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch("http://localhost:3000/api/products?offset=0&limit=9")
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products?offset=0&limit=9`)
   const data = await res.json()
 
   const products = data.productsSliced

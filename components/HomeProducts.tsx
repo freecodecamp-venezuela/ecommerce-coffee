@@ -14,7 +14,7 @@ function HomeProducts({ coffees, offset, isProductsLeft }) {
     const fetchData = async () => {
       const params = `offset=${dataOffset}&limit=6`
 
-      const res = await fetch(`http://localhost:3000/api/products?${params}`)
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products?${params}`)
       const data = await res.json()
 
       setCoffeesArr([...coffeesArr, ...data.productsSliced])
