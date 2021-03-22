@@ -2,31 +2,32 @@ import { useState, useEffect} from 'react'
 import { Flex, Grid, Box, Text} from '@chakra-ui/react'
 import Product from './Product'
 
-function HomeProducts({coffees, itemsLeft}) {
-  const [coffeesArr, setCoffeeArr] = useState([...coffees])
-  const [coffeesLeft, setCoffeesLeft] = useState(itemsLeft)
-  const [query, setQuery] = useState(false)
+function HomeProducts({ coffees, offset, isProductsLeft }) {
+  const [coffeesArr, setCoffeesArr] = useState([...coffees])
+  const [dataOffset, setDataOffset] = useState(offset.toString())
+  const [isCoffeLeft, setIsCoffeesLeft] = useState(isProductsLeft)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect( ()=> {
-    if (!query) return
+    if (!isLoading) return
 
     const fetchData = async () => {
-      const res = await fetch("http://localhost:3000/api/hello")
+      const params = `offset=${dataOffset}&limit=6`
+
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API}/products?${params}`)
       const data = await res.json()
 
-      const newCoffees = await data.slice(9)
-      const isCoffees= coffeesLeft - newCoffees.length
-
-      setCoffeesLeft(isCoffees)
-      setCoffeeArr([...coffeesArr, ...newCoffees])
-      setQuery(false)
+      setCoffeesArr([...coffeesArr, ...data.productsSliced])
+      setDataOffset(offset)
+      setIsCoffeesLeft(data.isProductsLeft)
+      setIsLoading(false)
     }
 
     fetchData()
-  }, [query])
+  }, [isLoading])
 
   const handleFetch = () => {
-    setQuery(true)
+    setIsLoading(true)
   }
 
   return(
@@ -45,7 +46,7 @@ function HomeProducts({coffees, itemsLeft}) {
       </Grid>
 
       <footer>
-        {coffeesLeft &&
+        {isCoffeLeft &&
           <Box
             w="max-content"
             m=".5em auto"
